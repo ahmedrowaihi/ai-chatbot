@@ -1,16 +1,31 @@
-import {
-  customProvider,
-  extractReasoningMiddleware,
-  wrapLanguageModel,
-} from 'ai';
-import { xai } from '@ai-sdk/xai';
+import { createFlowiseProvider } from '@ahmedrowaihi/flowise-vercel-ai-sdk-provider';
+import { customProvider } from 'ai';
+import { isTestEnvironment } from '../constants';
 import {
   artifactModel,
   chatModel,
   reasoningModel,
   titleModel,
 } from './models.test';
-import { isTestEnvironment } from '../constants';
+
+if (!process.env.FLOWISE_BASE_URL || !process.env.FLOWISE_API_KEY) {
+  throw new Error('FLOWISE_BASE_URL and FLOWISE_API_KEY must be set');
+}
+
+if (!process.env.FLOWISE_CHAT_FLOW_ID) {
+  throw new Error('FLOWISE_CHAT_FLOW_ID must be set');
+}
+
+if (!process.env.FLOWISE_CHAT_FLOW_ID) {
+  throw new Error('FLOWISE_CHAT_FLOW_ID must be set');
+}
+
+const flowiseProvider = createFlowiseProvider({
+  baseUrl: process.env.FLOWISE_BASE_URL,
+  apiKey: process.env.FLOWISE_API_KEY,
+});
+
+const flowiseModel = flowiseProvider(process.env.FLOWISE_CHAT_FLOW_ID);
 
 export const myProvider = isTestEnvironment
   ? customProvider({
@@ -21,17 +36,4 @@ export const myProvider = isTestEnvironment
         'artifact-model': artifactModel,
       },
     })
-  : customProvider({
-      languageModels: {
-        'chat-model': xai('grok-2-vision-1212'),
-        'chat-model-reasoning': wrapLanguageModel({
-          model: xai('grok-3-mini-beta'),
-          middleware: extractReasoningMiddleware({ tagName: 'think' }),
-        }),
-        'title-model': xai('grok-2-1212'),
-        'artifact-model': xai('grok-2-1212'),
-      },
-      imageModels: {
-        'small-model': xai.imageModel('grok-2-image'),
-      },
-    });
+  : customProvider({ languageModels: { 'chat-model': flowiseModel } });

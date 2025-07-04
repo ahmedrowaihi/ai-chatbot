@@ -65,7 +65,7 @@ export function Chat({
     generateId: generateUUID,
     transport: new DefaultChatTransport({
       api: '/api/chat',
-      fetch: fetchWithErrorHandlers,
+      fetch: fetchWithErrorHandlers as typeof fetch,
       prepareSendMessagesRequest({ messages, id, body }) {
         return {
           body: {
@@ -128,7 +128,7 @@ export function Chat({
 
   return (
     <>
-      <div className="flex flex-col min-w-0 h-dvh bg-background">
+      <div className="flex flex-col bg-background min-w-0 h-dvh">
         <ChatHeader
           chatId={id}
           selectedModelId={initialChatModel}
@@ -148,7 +148,7 @@ export function Chat({
           isArtifactVisible={isArtifactVisible}
         />
 
-        <form className="flex mx-auto px-4 bg-background pb-4 md:pb-6 gap-2 w-full md:max-w-3xl">
+        <form className="flex gap-2 bg-background mx-auto px-4 pb-4 md:pb-6 w-full md:max-w-3xl">
           {!isReadonly && (
             <MultimodalInput
               chatId={id}
