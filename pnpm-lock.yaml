@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@ahmedrowaihi/flowise-vercel-ai-sdk-provider':
-        specifier: 2.0.1
-        version: 2.0.1(ai@5.0.0-beta.6(zod@3.25.68))(typescript@5.8.2)(zod@3.25.68)
+        specifier: 2.1.0
+        version: 2.1.0(ai@5.0.0-beta.6(zod@3.25.68))(typescript@5.8.2)(zod@3.25.68)
       '@ai-sdk/provider':
         specifier: 2.0.0-beta.1
         version: 2.0.0-beta.1
@@ -282,8 +282,8 @@ importers:
 
 packages:
 
-  '@ahmedrowaihi/flowise-vercel-ai-sdk-provider@2.0.1':
-    resolution: {integrity: sha512-/Teno6G5pvFcDNnwiUFV+eAnC6A9qPPF2PYXdyh3lC/q6dXnabCtydXVSsFC48QzhYun5dwXDK0RFY1bdpwr2A==}
+  '@ahmedrowaihi/flowise-vercel-ai-sdk-provider@2.1.0':
+    resolution: {integrity: sha512-tA0G37WxFhjIQyazq9nk8JG+JhxSy5E6ORG3n51QMvSlbS++kuPTivJmMA12DA2ldrAdNUwfOa+FjL9BEnsHiQ==}
     engines: {node: '>=18'}
     peerDependencies:
       ai: 5.0.0-beta.6
@@ -4101,7 +4101,7 @@ packages:
 
 snapshots:
 
-  '@ahmedrowaihi/flowise-vercel-ai-sdk-provider@2.0.1(ai@5.0.0-beta.6(zod@3.25.68))(typescript@5.8.2)(zod@3.25.68)':
+  '@ahmedrowaihi/flowise-vercel-ai-sdk-provider@2.1.0(ai@5.0.0-beta.6(zod@3.25.68))(typescript@5.8.2)(zod@3.25.68)':
     dependencies:
       ai: 5.0.0-beta.6(zod@3.25.68)
       flowise-sdk: 1.0.9

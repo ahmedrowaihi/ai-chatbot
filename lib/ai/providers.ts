@@ -12,12 +12,8 @@ if (!process.env.FLOWISE_BASE_URL || !process.env.FLOWISE_API_KEY) {
   throw new Error('FLOWISE_BASE_URL and FLOWISE_API_KEY must be set');
 }
 
-if (!process.env.FLOWISE_CHAT_FLOW_ID) {
-  throw new Error('FLOWISE_CHAT_FLOW_ID must be set');
-}
-
-if (!process.env.FLOWISE_CHAT_FLOW_ID) {
-  throw new Error('FLOWISE_CHAT_FLOW_ID must be set');
+if (!process.env.FLOWISE_CHATFLOW_ID) {
+  throw new Error('FLOWISE_CHATFLOW_ID must be set');
 }
 
 const flowiseProvider = createFlowiseProvider({
@@ -25,7 +21,7 @@ const flowiseProvider = createFlowiseProvider({
   apiKey: process.env.FLOWISE_API_KEY,
 });
 
-const flowiseModel = flowiseProvider(process.env.FLOWISE_CHAT_FLOW_ID);
+const flowiseModel = flowiseProvider(process.env.FLOWISE_CHATFLOW_ID);
 
 export const myProvider = isTestEnvironment
   ? customProvider({
